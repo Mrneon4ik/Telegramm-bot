@@ -15,11 +15,13 @@ def start_message(message):
 def button_message(message):
     print(2)
     markup=types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1=types.KeyboardButton("ознакомиться")
     item2=types.KeyboardButton('погода')
     item3=types.KeyboardButton('новости')
-    markup.add(item1, item2, item3)
-    bot.send_message(message.chat.id,'для ознакомления об использовании нажмите на клавишу',reply_markup=markup)
+    item4=types.KeyboardButton('YouTube')
+    item6=types.KeyboardButton("test")
+    item5=types.KeyboardButton("play market")
+    markup.add(item2, item3, item4, item5, item6)
+    bot.send_message(message.chat.id,'доступные команды смотрите ниже',reply_markup=markup)
 
 @bot.message_handler(commands=['game'])
 def button_message1(message):
@@ -35,6 +37,10 @@ def message_reply(message):
         bot.send_message(message.chat.id,'выберите ниже кнопки')
     elif message.text=='погода' and 'Погода':
         bot.send_message(message.chat.id, 'https://yandex.ru/pogoda/novouralsk?lat=57.247235&lon=60.095604')
+    elif message.text=='YouTube':
+         bot.send_message(message.chat.id,'m.youtube.com')
+    elif message.text=='test':
+        bot.send_message(message.chat.id, "пройден")
     elif message.text=='новости' and 'Новости':
         bot.send_message(message.chat.id, 'https://yandex.ru/news')
     elif message.text=='random':
@@ -45,4 +51,5 @@ def message_reply(message):
 
 
 bot.infinity_polling()
+
 
