@@ -3,7 +3,7 @@ from re import T
 import telebot
 from telebot import types
 
-token='5749057194:AAE0AWDfVC88hfLFuLawb5O7rj9weqaMBYM'
+token='5749057194:AAE0AWDfVC88hfLFuLawb5O7rj9weqaMBYM' #ваш токен должен быть здесь
 bot=telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
@@ -13,13 +13,12 @@ def start_message(message):
 
 @bot.message_handler(commands=['go'])
 def button_message(message):
-    print(2)
+    print(2) #это отладка работы если что можете убрать
     markup=types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1=types.KeyboardButton("ознакомиться")
-    item2=types.KeyboardButton('погода')
-    item3=types.KeyboardButton('новости')
-    markup.add(item1, item2, item3)
-    bot.send_message(message.chat.id,'для ознакомления об использовании нажмите на клавишу',reply_markup=markup)
+    item1=types.KeyboardButton('погода')
+    item2=types.KeyboardButton('новости')
+    markup.add(item1, item2)
+    bot.send_message(message.chat.id,'Доступные команды ниже',reply_markup=markup)
 
 @bot.message_handler(commands=['game'])
 def button_message1(message):
